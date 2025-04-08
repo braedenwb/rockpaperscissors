@@ -44,6 +44,32 @@ function getUserChoice()
     return prompt("Enter rock, paper, or scissors: ");
 }
 
+// Play a round
+function playRound(userChoice,  computerChoice, computerScore, userScore)
+{
+    // compare user choice to computer choice
+    if (userChoice.toLowerCase() === computerChoice.toLowerCase())
+    {
+        console.log("It's a tie!");
+    }
+    else if (userChoice.toLowerCase() === ROCK && computerChoice.toLowerCase() === PAPER || userChoice.toLowerCase() === PAPER && computerChoice.toLowerCase() === SCISSORS || userChoice.toLowerCase() === SCISSORS && computerChoice.toLowerCase() === ROCK)
+    {
+        console.log("You lost!");
+        computerScore + 1;
+        console.log("User: " + userScore + " Computer: " + computerScore);
+    }
+    else if (userChoice.toLowerCase() === ROCK && computerChoice.toLowerCase() === SCISSORS || userChoice.toLowerCase() === PAPER && computerChoice.toLowerCase() === ROCK || userChoice.toLowerCase() === SCISSORS && computerChoice.toLowerCase() === PAPER)
+    {
+        console.log("You won!");
+        userScore + 1;
+        console.log("User: " + userScore + " Computer: " + computerScore);
+    }
+    else
+    {
+        console.log("Error, check spelling.");
+    }
+}
+
 // Variables to store user and computer choices
 let userChoice = getUserChoice();
 console.log("You: " + userChoice.replace(userChoice[0], userChoice[0].toUpperCase()));
@@ -54,27 +80,5 @@ console.log("Computer: " + computerChoice);
 // Score tracking
 let userScore = 0; 
 let computerScore = 0;
-
-// Play a round
-function playRound(userChoice,  computerChoice)
-{
-    // compare user choice to computer choice
-    if (userChoice.toLowerCase() === computerChoice.toLowerCase())
-    {
-        console.log("It's a tie!");
-    }
-    else if (userChoice.toLowerCase() === ROCK && computerChoice.toLowerCase() === PAPER || userChoice.toLowerCase() === PAPER && computerChoice.toLowerCase() === SCISSORS || userChoice.toLowerCase() === SCISSORS && computerChoice.toLowerCase() === ROCK)
-    {
-        console.log("You lost!");
-    }
-    else if (userChoice.toLowerCase() === ROCK && computerChoice.toLowerCase() === SCISSORS || userChoice.toLowerCase() === PAPER && computerChoice.toLowerCase() === ROCK || userChoice.toLowerCase() === SCISSORS && computerChoice.toLowerCase() === PAPER)
-    {
-        console.log("You won!");
-    }
-    else
-    {
-        console.log("Error, check spelling.");
-    }
-}
 
 playRound(userChoice, computerChoice);
