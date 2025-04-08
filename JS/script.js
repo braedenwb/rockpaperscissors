@@ -20,17 +20,14 @@ function getComputerChoice()
 {
     if (Math.random() <= 0.33333333)
     {
-        console.log("Computer: Rock");
         return "Rock";
     }
     else if (Math.random() <= 0.66666666)
     {
-        console.log("Computer: Paper");
         return "Paper";
     }
     else if (Math.random() <= 0.99999999)
     {
-        console.log("Computer: Scissors");
         return "Scissors";
     }
 }
@@ -38,12 +35,15 @@ function getComputerChoice()
 // Function to get human choice between rock, paper, and scissors
 function getUserChoice()
 {
-    return console.log(prompt("Enter rock, paper, or scissors: "));
+    return prompt("Enter rock, paper, or scissors: ");
 }
 
 // Variables to store user and computer choices
 let userChoice = getUserChoice();
+console.log("You: " + userChoice.replace(userChoice[0], userChoice[0].toUpperCase()));
+
 let computerChoice = getComputerChoice();
+console.log("Computer: " + computerChoice);
 
 // Score tracking
 let userScore = 0; 
@@ -58,3 +58,5 @@ function playRound(userChoice,  computerChoice)
         console.log("It's a tie!");
     }
 }
+
+playRound(userChoice, computerChoice);
