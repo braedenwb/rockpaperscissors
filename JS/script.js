@@ -15,6 +15,12 @@
  * 0.67 will return scissors
  */
 
+// CONSTANTS
+const ROCK = "rock";
+const PAPER = "paper";
+const SCISSORS = "scissors";
+
+
 // Function to get computers choice between rock, paper and scissors
 function getComputerChoice()
 {
@@ -56,6 +62,18 @@ function playRound(userChoice,  computerChoice)
     if (userChoice.toLowerCase() === computerChoice.toLowerCase())
     {
         console.log("It's a tie!");
+    }
+    else if (userChoice.toLowerCase() === ROCK && computerChoice.toLowerCase() === PAPER || userChoice.toLowerCase() === PAPER && computerChoice.toLowerCase() === SCISSORS || userChoice.toLowerCase() === SCISSORS && computerChoice.toLowerCase() === ROCK)
+    {
+        console.log("You lost!");
+    }
+    else if (userChoice.toLowerCase() === ROCK && computerChoice.toLowerCase() === SCISSORS || userChoice.toLowerCase() === PAPER && computerChoice.toLowerCase() === ROCK || userChoice.toLowerCase() === SCISSORS && computerChoice.toLowerCase() === PAPER)
+    {
+        console.log("You won!");
+    }
+    else
+    {
+        console.log("Error, check spelling.");
     }
 }
 
