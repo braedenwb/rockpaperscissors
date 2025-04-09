@@ -75,11 +75,13 @@ function playRound(userChoice,  computerChoice, userScore, computerScore)
     };
 }
 
+// Function to play 5 rounds
 function playGame(){
     // Score tracking
     let userScore = 0; 
     let computerScore = 0;
 
+    // Initiate 5 rounds
     for (let round = 1; round <= 5; round++)
     {
         // Indicate what round the loop is on
@@ -98,6 +100,21 @@ function playGame(){
 
         // Empty space to increase readability
         console.log("");
+    }
+
+    // Calculate winner of games
+
+    if (userScore > computerScore)
+    {
+        console.log("You won!");
+    }
+    else if (userScore < computerScore)
+    {
+        console.log("You lost!");
+    }
+    else
+    {
+        console.log("It's a tie!");
     }
 }
 
