@@ -20,6 +20,11 @@ const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
+// Function to get human choice between rock, paper, and scissors
+function getUserChoice()
+{
+    return prompt("Enter rock, paper, or scissors: ");
+}
 
 // Function to get computers choice between rock, paper and scissors
 function getComputerChoice()
@@ -38,15 +43,12 @@ function getComputerChoice()
     }
 }
 
-// Function to get human choice between rock, paper, and scissors
-function getUserChoice()
-{
-    return prompt("Enter rock, paper, or scissors: ");
-}
-
 // Play a round
-function playRound(userChoice,  computerChoice, computerScore, userScore)
+function playRound(userChoice,  computerChoice, userScore, computerScore)
 {
+    console.log(`You: ${userChoice.replace(userChoice[0], userChoice[0].toUpperCase())}`);
+    console.log(`Computer: ${computerChoice}`);
+
     // compare user choice to computer choice
     if (userChoice.toLowerCase() === computerChoice.toLowerCase())
     {
@@ -55,30 +57,48 @@ function playRound(userChoice,  computerChoice, computerScore, userScore)
     else if (userChoice.toLowerCase() === ROCK && computerChoice.toLowerCase() === PAPER || userChoice.toLowerCase() === PAPER && computerChoice.toLowerCase() === SCISSORS || userChoice.toLowerCase() === SCISSORS && computerChoice.toLowerCase() === ROCK)
     {
         console.log("You lost!");
-        computerScore + 1;
-        console.log("User: " + userScore + " Computer: " + computerScore);
+        computerScore++;
     }
     else if (userChoice.toLowerCase() === ROCK && computerChoice.toLowerCase() === SCISSORS || userChoice.toLowerCase() === PAPER && computerChoice.toLowerCase() === ROCK || userChoice.toLowerCase() === SCISSORS && computerChoice.toLowerCase() === PAPER)
     {
         console.log("You won!");
-        userScore + 1;
-        console.log("User: " + userScore + " Computer: " + computerScore);
+        userScore++;
     }
     else
     {
         console.log("Error, check spelling.");
     }
+
+    return{
+        userScore,
+        computerScore
+    };
 }
 
-// Variables to store user and computer choices
-let userChoice = getUserChoice();
-console.log("You: " + userChoice.replace(userChoice[0], userChoice[0].toUpperCase()));
+function playGame(){
+    // Score tracking
+    let userScore = 0; 
+    let computerScore = 0;
 
-let computerChoice = getComputerChoice();
-console.log("Computer: " + computerChoice);
+    for (let round = 1; round <= 5; round++)
+    {
+        // Indicate what round the loop is on
+        console.log(`Round ${round}`);
 
-// Score tracking
-let userScore = 0; 
-let computerScore = 0;
+        // Initiate round
+        let result = playRound(getUserChoice(), getComputerChoice(), userScore, computerScore);
 
-playRound(userChoice, computerChoice);
+        // Increments user and computers score
+        userScore = result.userScore;
+        computerScore = result.computerScore;
+
+        // Display scores
+        console.log(`Your score: ${userScore}`);
+        console.log(`Computer score: ${computerScore}`);
+
+        // Empty space to increase readability
+        console.log("");
+    }
+}
+
+playGame();
