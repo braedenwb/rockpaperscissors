@@ -1,32 +1,17 @@
-/*
- * Rock Paper Scissors
- * Choose option (rock, paper, or scissors)
- * Run user option against randomly generated one
- * If rock v. paper: paper wins
- * If rock v. scissors: rock wins
- * if rock v. rock: tie
- * etc.
- */
-
-/*
- * Math.random() returns 0 < 1
- * 0 <= 0.33 will return rock
- * 0.34 < = 0.66 will return paper
- * 0.67 will return scissors
- */
-
 // CONSTANTS
 const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
-// Function to get human choice between rock, paper, and scissors
+// Function to get the users choice of rps
 function getUserChoice()
 {
-    return prompt("Enter rock, paper, or scissors: ");
+    // return prompt("Enter rock, paper, or scissors: ");
+
+    // ADD DOM LOGIC HERE 
 }
 
-// Function to get computers choice between rock, paper and scissors
+// Generates the computers choice of rps
 function getComputerChoice()
 {
     if (Math.random() <= 0.33333333)
