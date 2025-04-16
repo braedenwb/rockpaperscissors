@@ -1,10 +1,6 @@
 # Rock Paper Scissors Game
 
-This is a basic Rock Paper Scissors web console game developed with Javascript
-
-## How to use
-
-Use the shortcut CTRL(or command)+SHIFT+J to enter the console
+This is a basic Rock Paper Scissors web game developed with Vanilla Javascript, HTML, and CSS.
 
 ## Odin Project
 
@@ -12,4 +8,4 @@ This was the third project in the foundations course of the [Odin Project](https
 
 ## What I learned
 
-Developing this project refreshed my memory on Javascript and expanded my knowledge on Google Devtools
+During my time developing this project I refreshed my memory on Javascript, expanded my knowledge on Googles Devtools, and improved my skills in DOM manipulation with Javascript.
