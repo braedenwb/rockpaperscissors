@@ -1,17 +1,29 @@
-// CONSTANTS
+/*
+    Pseudocode for DOM
+
+    Add 3 buttons listeners to listen for user input
+    Store the score element in a variable
+    When a button is pressed log that button as the users choice (ex. "rock")
+
+    Repeat 5 times
+    Start a round using the users choice and a randomly generated computer choice
+    The winner is added to the scoring section
+
+    Figure out winner and append to a text that says result (ex. "You Won!")
+*/
+
+
+
+
 const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
-// Function to get the users choice of rps
 function getUserChoice()
 {
     // return prompt("Enter rock, paper, or scissors: ");
-
-    // ADD DOM LOGIC HERE 
 }
 
-// Generates the computers choice of rps
 function getComputerChoice()
 {
     if (Math.random() <= 0.33333333)
@@ -22,19 +34,17 @@ function getComputerChoice()
     {
         return "Paper";
     }
-    else if (Math.random() <= 0.99999999)
+    else
     {
         return "Scissors";
     }
 }
 
-// Play a round
 function playRound(userChoice,  computerChoice, userScore, computerScore)
 {
     console.log(`You: ${userChoice.replace(userChoice[0], userChoice[0].toUpperCase())}`);
     console.log(`Computer: ${computerChoice}`);
 
-    // compare user choice to computer choice
     if (userChoice.toLowerCase() === computerChoice.toLowerCase())
     {
         console.log("It's a tie!");
@@ -60,34 +70,25 @@ function playRound(userChoice,  computerChoice, userScore, computerScore)
     };
 }
 
-// Function to play 5 rounds
 function playGame(){
-    // Score tracking
+
     let userScore = 0; 
     let computerScore = 0;
 
-    // Initiate 5 rounds
     for (let round = 1; round <= 5; round++)
     {
-        // Indicate what round the loop is on
         console.log(`Round ${round}`);
 
-        // Initiate round
         let result = playRound(getUserChoice(), getComputerChoice(), userScore, computerScore);
 
-        // Increments user and computers score
         userScore = result.userScore;
         computerScore = result.computerScore;
 
-        // Display scores
         console.log(`Your score: ${userScore}`);
         console.log(`Computer score: ${computerScore}`);
 
-        // Empty space to increase readability
         console.log("");
     }
-
-    // Calculate winner of games
 
     if (userScore > computerScore)
     {
