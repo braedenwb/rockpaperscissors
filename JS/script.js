@@ -12,22 +12,26 @@
     Figure out winner and append to a text that says result (ex. "You Won!")
 */
 
-// const rockButton = document.querySelector(".button-rock");
-// const paperButton = document.querySelector(".button-paper");
-// const scissorsButton = document.querySelector(".button-scissors");
-
-const userChoiceButtons = document.querySelectorAll(".buttons");
+const rockButton = document.querySelector(".button-rock");
+const paperButton = document.querySelector(".button-paper");
+const scissorsButton = document.querySelector(".button-scissors");
 
 const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
+const score = document.querySelector(".score");
+
 function getUserChoice()
 {
-    userChoiceButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            alert("hi");
-        });
+    rockButton.addEventListener("click", () => {
+        return ROCK;
+    });
+    paperButton.addEventListener("click", () => {
+        return PAPER;
+    });
+    scissorsButton.addEventListener("click", () => {
+        return SCISSORS;
     });
 }
 
