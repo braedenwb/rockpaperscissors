@@ -17,6 +17,7 @@ const paperButton = document.querySelector(".button-paper");
 const scissorsButton = document.querySelector(".button-scissors");
 const score = document.querySelector(".score");
 const roundStatus = document.querySelector(".round-status");
+const gameWinner = document.querySelector(".game-winner");
 
 const ROCK = "rock";
 const PAPER = "paper";
@@ -50,6 +51,7 @@ function playRound(userChoice)
 
     if (userChoice === computerChoice)
     {
+        score.textContent = userScore + " - " + computerScore;
         roundStatus.textContent = "It's a tie!";
     }
     else if (userChoice === ROCK && computerChoice === PAPER || userChoice === PAPER && computerChoice === SCISSORS || userChoice === SCISSORS && computerChoice === ROCK)
@@ -57,6 +59,7 @@ function playRound(userChoice)
         computerScore++;
         console.log("User: " + userScore);
         console.log("Computer: " + computerScore)
+        score.textContent = userScore + " - " + computerScore;
         roundStatus.textContent = "You lost!";
     }
     else
@@ -64,7 +67,19 @@ function playRound(userChoice)
         userScore++;
         console.log("User: " + userScore);
         console.log("Computer: " + computerScore)
+        score.textContent = userScore + " - " + computerScore;
         roundStatus.textContent = "You won!";
+    }
+
+    if (userScore === 3)
+    {
+        roundStatus.textContent = "";
+        gameWinner.textContent = "You won!";
+    }
+    else if (computerScore === 3)
+    {
+        roundStatus.textContent = "";
+        gameWinner.textContent = "You lost!";
     }
 }
 

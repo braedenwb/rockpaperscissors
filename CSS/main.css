@@ -60,3 +60,17 @@ input {
     font-weight: 700;
     text-align: center;
 }
+
+.new-game-container {
+    padding: 10px;
+    justify-self: center;
+}
+
+.new-game-button {
+    background-image: linear-gradient(rgb(24, 52, 69), rgb(22, 47, 62), rgb(28, 57, 75), rgb(24, 52, 69));
+    color: rgb(147, 134, 134);
+    border: none;
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+}
