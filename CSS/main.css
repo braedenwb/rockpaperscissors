@@ -33,16 +33,30 @@ input {
     color: rgb(147, 134, 134);
     font-weight: 700;
     text-align: center;
-    padding: 10px;
 }
 
 .score-title {
     color: rgb(198, 184, 184);
     font-size: 48px;
+    padding: 10px;
 }
 
 .score {
     color: rgb(147, 134, 134);
     font-size: 36px;
-    padding: 10px;
+}
+
+.round-status {
+    color: rgb(147, 134, 134);
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.game-winner {
+    color: rgb(198, 184, 184);
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
 }

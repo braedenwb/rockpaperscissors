@@ -16,6 +16,7 @@ const rockButton = document.querySelector(".button-rock");
 const paperButton = document.querySelector(".button-paper");
 const scissorsButton = document.querySelector(".button-scissors");
 const score = document.querySelector(".score");
+const roundStatus = document.querySelector(".round-status");
 
 const ROCK = "rock";
 const PAPER = "paper";
@@ -23,7 +24,6 @@ const SCISSORS = "scissors";
 
 let userScore = 0; 
 let computerScore = 0;
-let round = 1;
 
 function getComputerChoice()
 {
@@ -45,30 +45,33 @@ function playRound(userChoice)
 {
     let computerChoice = getComputerChoice();
 
-    console.log(round);
     console.log(userChoice);
     console.log(computerChoice);
 
     if (userChoice === computerChoice)
     {
-        console.log("It's a tie!");
+        roundStatus.textContent = "It's a tie!";
     }
     else if (userChoice === ROCK && computerChoice === PAPER || userChoice === PAPER && computerChoice === SCISSORS || userChoice === SCISSORS && computerChoice === ROCK)
     {
-        console.log("You lost!");
+        computerScore++;
+        console.log("User: " + userScore);
+        console.log("Computer: " + computerScore)
+        roundStatus.textContent = "You lost!";
     }
     else
     {
-        console.log("You won!");
+        userScore++;
+        console.log("User: " + userScore);
+        console.log("Computer: " + computerScore)
+        roundStatus.textContent = "You won!";
     }
-
-    round++;
 }
 
 function playGame()
 {
     rockButton.addEventListener("click", () => {
-        if (round <= 5)
+        if (userScore < 3 && computerScore < 3)
         {
             playRound(ROCK);
         }
@@ -78,7 +81,7 @@ function playGame()
         }
     });
     paperButton.addEventListener("click", () => {
-        if (round <= 5)
+        if (userScore < 3 && computerScore < 3)
         {
             playRound(PAPER);
         }
@@ -88,7 +91,7 @@ function playGame()
         }
     });
     scissorsButton.addEventListener("click", () => {
-        if (round <= 5)
+        if (userScore < 3 && computerScore < 3)
         {
             playRound(SCISSORS);
         }
