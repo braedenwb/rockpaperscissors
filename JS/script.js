@@ -15,104 +15,153 @@
 const rockButton = document.querySelector(".button-rock");
 const paperButton = document.querySelector(".button-paper");
 const scissorsButton = document.querySelector(".button-scissors");
+const score = document.querySelector(".score");
 
 const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
-const score = document.querySelector(".score");
-
-function getUserChoice()
-{
-    rockButton.addEventListener("click", () => {
-        return ROCK;
-    });
-    paperButton.addEventListener("click", () => {
-        return PAPER;
-    });
-    scissorsButton.addEventListener("click", () => {
-        return SCISSORS;
-    });
-}
+let userScore = 0; 
+let computerScore = 0;
+let round = 1;
 
 function getComputerChoice()
 {
     if (Math.random() <= 0.33333333)
     {
-        return "Rock";
+        return ROCK;
     }
     else if (Math.random() <= 0.66666666)
     {
-        return "Paper";
+        return PAPER;
     }
     else
     {
-        return "Scissors";
+        return SCISSORS;
     }
 }
 
-function playRound(userChoice,  computerChoice, userScore, computerScore)
+function playRound(userChoice)
 {
-    console.log(`You: ${userChoice.replace(userChoice[0], userChoice[0].toUpperCase())}`);
-    console.log(`Computer: ${computerChoice}`);
+    let computerChoice = getComputerChoice();
 
-    if (userChoice.toLowerCase() === computerChoice.toLowerCase())
+    console.log(round);
+    console.log(userChoice);
+    console.log(computerChoice);
+
+    if (userChoice === computerChoice)
     {
         console.log("It's a tie!");
     }
-    else if (userChoice.toLowerCase() === ROCK && computerChoice.toLowerCase() === PAPER || userChoice.toLowerCase() === PAPER && computerChoice.toLowerCase() === SCISSORS || userChoice.toLowerCase() === SCISSORS && computerChoice.toLowerCase() === ROCK)
+    else if (userChoice === ROCK && computerChoice === PAPER || userChoice === PAPER && computerChoice === SCISSORS || userChoice === SCISSORS && computerChoice === ROCK)
     {
         console.log("You lost!");
-        computerScore++;
-    }
-    else if (userChoice.toLowerCase() === ROCK && computerChoice.toLowerCase() === SCISSORS || userChoice.toLowerCase() === PAPER && computerChoice.toLowerCase() === ROCK || userChoice.toLowerCase() === SCISSORS && computerChoice.toLowerCase() === PAPER)
-    {
-        console.log("You won!");
-        userScore++;
     }
     else
     {
-        console.log("Error, check spelling.");
+        console.log("You won!");
     }
 
-    return{
-        userScore,
-        computerScore
-    };
+    round++;
 }
 
-function playGame(){
-
-    let userScore = 0; 
-    let computerScore = 0;
-
-    for (let round = 1; round <= 5; round++)
-    {
-        console.log(`Round ${round}`);
-
-        let result = playRound(getUserChoice(), getComputerChoice(), userScore, computerScore);
-
-        userScore = result.userScore;
-        computerScore = result.computerScore;
-
-        console.log(`Your score: ${userScore}`);
-        console.log(`Computer score: ${computerScore}`);
-
-        console.log("");
-    }
-
-    if (userScore > computerScore)
-    {
-        console.log("You won!");
-    }
-    else if (userScore < computerScore)
-    {
-        console.log("You lost!");
-    }
-    else
-    {
-        console.log("It's a tie!");
-    }
+function playGame()
+{
+    rockButton.addEventListener("click", () => {
+        if (round <= 5)
+        {
+            playRound(ROCK);
+        }
+        else
+        {
+            return;
+        }
+    });
+    paperButton.addEventListener("click", () => {
+        if (round <= 5)
+        {
+            playRound(PAPER);
+        }
+        else
+        {
+            return;
+        }
+    });
+    scissorsButton.addEventListener("click", () => {
+        if (round <= 5)
+        {
+            playRound(SCISSORS);
+        }
+        else
+        {
+            return;
+        }
+    });
 }
 
 playGame();
+
+
+
+// function playRound(userChoice, computerChoice, userScore, computerScore)
+// {
+//     console.log(userChoice);
+//     console.log(computerChoice);
+
+//     if (userChoice.toLowerCase() === computerChoice.toLowerCase())
+//     {
+//         console.log("It's a tie!");
+//     }
+//     else if (userChoice.toLowerCase() === ROCK && computerChoice.toLowerCase() === PAPER || userChoice.toLowerCase() === PAPER && computerChoice.toLowerCase() === SCISSORS || userChoice.toLowerCase() === SCISSORS && computerChoice.toLowerCase() === ROCK)
+//     {
+//         console.log("You lost!");
+//         computerScore++;
+//     }
+//     else if (userChoice.toLowerCase() === ROCK && computerChoice.toLowerCase() === SCISSORS || userChoice.toLowerCase() === PAPER && computerChoice.toLowerCase() === ROCK || userChoice.toLowerCase() === SCISSORS && computerChoice.toLowerCase() === PAPER)
+//     {
+//         console.log("You won!");
+//         userScore++;
+//     }
+//     else
+//     {
+//         console.log("Error, check spelling.");
+//     }
+
+//     return{
+//         userScore,
+//         computerScore
+//     };
+// }
+
+// function playGame(userChoice){
+
+//     for (let round = 1; round <= 5; round++)
+//     {
+//         console.log(`Round ${round}`);
+
+//         let result = playRound(userChoice, getComputerChoice(), userScore, computerScore);
+
+//         userScore = result.userScore;
+//         computerScore = result.computerScore;
+
+//         console.log(`Your score: ${userScore}`);
+//         console.log(`Computer score: ${computerScore}`);
+
+//         console.log("");
+//     }
+
+//     if (userScore > computerScore)
+//     {
+//         console.log("You won!");
+//     }
+//     else if (userScore < computerScore)
+//     {
+//         console.log("You lost!");
+//     }
+//     else
+//     {
+//         console.log("It's a tie!");
+//     }
+// }
+
+// getUserChoice();
